@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequisicionController;
+
+Route::post('/requisiciones', [RequisicionController::class, 'store']);
 use App\Http\Controllers\MaterialController;
 use Illuminate\Support\Facades\Route;
 
