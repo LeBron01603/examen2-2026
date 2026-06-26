@@ -34,7 +34,7 @@ return new class extends Migration
                   ->onDelete('cascade');
 
             $table->foreign('codigo_presupuesto')
-                  ->references('codigo')
+                  ->references('codigo_presupuesto')
                   ->on('presupuestos')
                   ->onDelete('cascade');
         });

@@ -1,7 +1,10 @@
+<?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MaterialUnidad extends Model
 {
@@ -9,7 +12,6 @@ class MaterialUnidad extends Model
 
     protected $table = 'material_unidad';
     
-    // Definición explícita de la llave primaria personalizada
     protected $primaryKey = 'id_material_unidad';
 
     protected $fillable = [
@@ -22,7 +24,7 @@ class MaterialUnidad extends Model
     /**
      * Relación inversa hacia el modelo Unidad.
      */
-    public function unidad()
+    public function unidad(): BelongsTo
     {
         return $this->belongsTo(Unidad::class, 'id_unidad', 'id_unidad');
     }
@@ -30,7 +32,7 @@ class MaterialUnidad extends Model
     /**
      * Relación inversa hacia el modelo Material.
      */
-    public function material()
+    public function material(): BelongsTo
     {
         return $this->belongsTo(Material::class, 'codigo', 'codigo');
     }
@@ -38,8 +40,8 @@ class MaterialUnidad extends Model
     /**
      * Relación inversa hacia el modelo Presupuesto.
      */
-    public function presupuesto()
+    public function presupuesto(): BelongsTo
     {
-        return $this->belongsTo(Presupuesto::class, 'codigo_presupuesto', 'codigo');
+        return $this->belongsTo(Presupuesto::class, 'codigo_presupuesto', 'codigo_presupuesto');
     }
 }
